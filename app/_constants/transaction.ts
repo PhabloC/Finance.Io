@@ -10,7 +10,7 @@ export const TRANSACTION_CATEGORY_LABELS = {
   FOOD: "Alimentação",
   HEALTH: "Saúde",
   HOUSING: "Moradia",
-  INVESTIMENT: "Investimento",
+  INVESTMENT: "Investimento",
   OTHER: "Outros",
   SALARY: "Salário",
   TRANSPORTATION: "Transporte",
@@ -37,7 +37,7 @@ export const TRANSACTION_TYPE_OPTIONS = [
     label: "Depósito",
   },
   {
-    value: TransactionType.INVESTIMENT,
+    value: TransactionType.INVESTMENT,
     label: "Investimento",
   },
 ];
