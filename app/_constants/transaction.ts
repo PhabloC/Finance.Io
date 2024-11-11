@@ -4,13 +4,22 @@ import {
   TransactionType,
 } from "@prisma/client";
 
+export const TRANSACTION_PAYMENT_METHOD_ICONS = {
+  [TransactionPaymentMethod.CREDIT_CARD]: "credit-card.png",
+  [TransactionPaymentMethod.DEBIT_CARD]: "credit-card.png",
+  [TransactionPaymentMethod.BANK_TRANSFER]: "bank-transfer.svg",
+  [TransactionPaymentMethod.BANK_SLIP]: "bank-slip.png",
+  [TransactionPaymentMethod.CASH]: "cash.svg",
+  [TransactionPaymentMethod.PIX]: "pix.png",
+  [TransactionPaymentMethod.OTHER]: "other.svg",
+};
+
 export const TRANSACTION_CATEGORY_LABELS = {
   EDUCATION: "Educação",
-  ENTERTAIMENT: "Entretenimento",
+  ENTERTAINMENT: "Entretenimento",
   FOOD: "Alimentação",
   HEALTH: "Saúde",
   HOUSING: "Moradia",
-  INVESTMENT: "Investimento",
   OTHER: "Outros",
   SALARY: "Salário",
   TRANSPORTATION: "Transporte",
@@ -83,8 +92,8 @@ export const TRANSACTION_CATEGORY_OPTIONS = [
     label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.EDUCATION],
   },
   {
-    value: TransactionCategory.ENTERTAIMENT,
-    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.ENTERTAIMENT],
+    value: TransactionCategory.ENTERTAINMENT,
+    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.ENTERTAINMENT],
   },
   {
     value: TransactionCategory.FOOD,

@@ -20,7 +20,7 @@ export const getDashboard = async (month: string) => {
         where: { ...where, type: "DEPOSIT" },
         _sum: { amount: true },
       })
-    )._sum?.amount,
+    )?._sum?.amount,
   );
 
   const investmentsTotal = Number(
@@ -29,7 +29,7 @@ export const getDashboard = async (month: string) => {
         where: { ...where, type: "INVESTMENT" },
         _sum: { amount: true },
       })
-    )._sum?.amount,
+    )?._sum?.amount,
   );
 
   const expensesTotal = Number(
@@ -38,7 +38,7 @@ export const getDashboard = async (month: string) => {
         where: { ...where, type: "EXPENSE" },
         _sum: { amount: true },
       })
-    )._sum?.amount,
+    )?._sum?.amount,
   );
 
   const balance = depositsTotal - investmentsTotal - expensesTotal;
@@ -78,11 +78,13 @@ export const getDashboard = async (month: string) => {
       (Number(category._sum.amount) / Number(expensesTotal)) * 100,
     ),
   }));
+
   const lastTransactions = await db.transaction.findMany({
     where,
     orderBy: { date: "desc" },
-    take: 15,
+    take: 10,
   });
+
   return {
     balance,
     depositsTotal,
