@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "./ui/button";
 import {
   Dialog,
@@ -29,7 +31,7 @@ import {
 } from "./ui/select";
 import {
   TRANSACTION_CATEGORY_OPTIONS,
-  TRANSACTION_PAYMENT_METHOD_OPTIIONS,
+  TRANSACTION_PAYMENT_METHOD_OPTIONS,
   TRANSACTION_TYPE_OPTIONS,
 } from "../_constants/transaction";
 import { DatePicker } from "./ui/date-picker";
@@ -46,9 +48,11 @@ import { upsertTransaction } from "../_actions/upsert-transaction";
 interface UpsertTransactionDialogProps {
   isOpen: boolean;
   defaultValues?: FormSchema;
-  transaction?: string;
+  transactionId?: string;
   setIsOpen: (isOpen: boolean) => void;
 }
+
+type FormSchema = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
@@ -75,13 +79,11 @@ const formSchema = z.object({
   }),
 });
 
-type FormSchema = z.infer<typeof formSchema>;
-
-export const UpsertTransactionDialog = ({
+const UpsertTransactionDialog = ({
   isOpen,
-  defaultValues,
-  transactionId,
   setIsOpen,
+  transactionId,
+  defaultValues,
 }: UpsertTransactionDialogProps) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -173,7 +175,7 @@ export const UpsertTransactionDialog = ({
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a verified email to display" />
+                        <SelectValue placeholder="Selecione um tipo..." />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -233,7 +235,7 @@ export const UpsertTransactionDialog = ({
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {TRANSACTION_PAYMENT_METHOD_OPTIIONS.map((option) => (
+                      {TRANSACTION_PAYMENT_METHOD_OPTIONS.map((option) => (
                         <SelectItem key={option.value} value={option.value}>
                           {option.label}
                         </SelectItem>

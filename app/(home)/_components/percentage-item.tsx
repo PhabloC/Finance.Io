@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface PercentageItemProps {
   icon: ReactNode;
-  tittle: string;
+  title: string;
   value: number;
 }
 

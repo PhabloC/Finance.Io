@@ -42,7 +42,7 @@ export const TRANSACTION_TYPE_OPTIONS = [
   },
 ];
 
-export const TRANSACTION_PAYMENT_METHOD_OPTIIONS = [
+export const TRANSACTION_PAYMENT_METHOD_OPTIONS = [
   {
     value: TransactionPaymentMethod.BANK_TRANSFER,
     label:
